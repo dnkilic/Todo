@@ -65,24 +65,24 @@ class NoteDaoTest {
     @Test
     fun insertMultipleAndGetMultiple() = runBlocking {
         // arrange
-        val articles = FakeNoteFactory.createNotes(3)
+        val notes = FakeNoteFactory.createNotes(3)
 
         // act
-        db.noteDao().insertAll(articles)
+        db.noteDao().insertAll(notes)
         val loaded = db.noteDao().getAll()
 
         // verify
-        MatcherAssert.assertThat(loaded.size, CoreMatchers.equalTo(articles.size))
+        MatcherAssert.assertThat(loaded.size, CoreMatchers.equalTo(notes.size))
     }
 
     @Test
     fun insertMultipleAndDeleteMultiple() = runBlocking {
         // arrange
-        val articles = FakeNoteFactory.createNotes(3)
+        val notes = FakeNoteFactory.createNotes(3)
 
         // act
-        db.noteDao().insertAll(articles)
-        db.noteDao().delete(articles)
+        db.noteDao().insertAll(notes)
+        db.noteDao().delete(notes)
         val loaded = db.noteDao().getAll()
 
         // verify

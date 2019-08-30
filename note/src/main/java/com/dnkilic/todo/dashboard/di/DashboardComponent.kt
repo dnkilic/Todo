@@ -4,6 +4,9 @@ import android.content.Context
 import androidx.room.Room
 import com.dnkilic.todo.core.di.CoreComponent
 import com.dnkilic.todo.dashboard.DashboardFragment
+import com.dnkilic.todo.dashboard.model.DashboardContract
+import com.dnkilic.todo.dashboard.model.DashboardLocalData
+import com.dnkilic.todo.dashboard.model.DashboardRepository
 import com.dnkilic.todo.data.local.NoteDatabase
 import dagger.Component
 import dagger.Module
@@ -20,6 +23,14 @@ interface DashboardComponent {
 
 @Module
 class DashboardModule {
+
+    @Provides
+    @DashboardScope
+    fun dashboardRepository(local: DashboardContract.Local): DashboardContract.Repository  = DashboardRepository(local)
+
+    @Provides
+    @DashboardScope
+    fun localData(noteDatabase: NoteDatabase): DashboardContract.Local = DashboardLocalData(noteDatabase)
 
     @Provides
     @DashboardScope
