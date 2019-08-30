@@ -30,4 +30,8 @@ dependencies {
 
     api library.kotlin.stdlib7
     api library.google.dagger
+
+    api library.androidx.constraintlayout
+    api library.androidx.appcompat
+
 }

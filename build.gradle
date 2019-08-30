@@ -4,7 +4,11 @@ buildscript {
             'minSdk' : 21,
             'kotlin' : '1.3.50',
             'androidGradle' : '3.5.0',
-            'dagger' : '2.24'
+            'dagger' : '2.24',
+            'constraintlayout' : '1.1.3',
+            'appcompat' : '1.1.0-rc01',
+            'junit' : '4.12',
+            'junitExt' : '1.1.1',
     ]
 
     ext.library = [
@@ -14,6 +18,14 @@ buildscript {
             google : [
                     'dagger' : "com.google.dagger:dagger:${versions.dagger}",
                     'daggerCompiler' : "com.google.dagger:dagger-compiler:${versions.dagger}"
+            ],
+            androidx : [
+                    'appcompat' : "androidx.appcompat:appcompat:${versions.appcompat}",
+                    'constraintlayout' : "androidx.constraintlayout:constraintlayout:${versions.constraintlayout}"
+            ],
+            test : [
+                    'junit' : "junit:junit:${versions.junit}",
+                    'extJunit' : "androidx.test.ext:junit:${versions.junitExt}"
             ]
     ]
 

@@ -1,7 +1,8 @@
-package com.dnkilic.todo
+package com.dnkilic.todo.dashboard
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.dnkilic.todo.R
 
 class MainActivity : AppCompatActivity() {
 
