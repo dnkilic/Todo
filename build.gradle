@@ -9,6 +9,10 @@ buildscript {
             'appcompat' : '1.1.0-rc01',
             'junit' : '4.12',
             'junitExt' : '1.1.1',
+            'room' : '2.1.0',
+            'archCoreTesting' : '2.1.0-rc01',
+            'lifecycle' : '2.2.0-alpha02',
+            'runner' : '1.2.0',
     ]
 
     ext.library = [
@@ -21,11 +25,19 @@ buildscript {
             ],
             androidx : [
                     'appcompat' : "androidx.appcompat:appcompat:${versions.appcompat}",
-                    'constraintlayout' : "androidx.constraintlayout:constraintlayout:${versions.constraintlayout}"
+                    'constraintlayout' : "androidx.constraintlayout:constraintlayout:${versions.constraintlayout}",
+                    'room' : "androidx.room:room-runtime:${versions.room}",
+                    'roomKtx' : "androidx.room:room-ktx:${versions.room}",
+                    'roomCompiler' : "androidx.room:room-compiler:${versions.room}",
+                    'lifecycleExtensions' : "androidx.lifecycle:lifecycle-extensions:${versions.lifecycle}",
+                    'lifecycleViewModel' : "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycle}",
             ],
             test : [
                     'junit' : "junit:junit:${versions.junit}",
-                    'extJunit' : "androidx.test.ext:junit:${versions.junitExt}"
+                    'extJunit' : "androidx.test.ext:junit:${versions.junitExt}",
+                    'roomTesting' : "androidx.room:room-testing:${versions.room}",
+                    'archCoreTesting' : "androidx.arch.core:core-testing:${versions.archCoreTesting}",
+                    'runner' : "androidx.test:runner:${versions.runner}",
             ]
     ]
 

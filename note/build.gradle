@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion versions.targetSdk
@@ -18,12 +19,26 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    sourceSets {
+        androidTest {
+            java.srcDirs += "src/sharedTest/java"
+        }
+        test {
+            java.srcDirs += "src/sharedTest/java"
+        }
+    }
 }
 
 dependencies {
     implementation project(':core')
 
+    kapt library.androidx.roomCompiler
+
     testImplementation library.test.junit
 
+    androidTestImplementation library.test.archCoreTesting
     androidTestImplementation library.test.extJunit
+    androidTestImplementation library.test.roomTesting
+    androidTestImplementation library.test.runner
 }

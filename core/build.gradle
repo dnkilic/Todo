@@ -27,11 +27,15 @@ android {
 
 dependencies {
     kapt library.google.daggerCompiler
+    kapt library.androidx.roomCompiler
 
     api library.kotlin.stdlib7
     api library.google.dagger
 
     api library.androidx.constraintlayout
     api library.androidx.appcompat
-
+    api library.androidx.room
+    api library.androidx.roomKtx
+    api library.androidx.lifecycleExtensions
+    api library.androidx.lifecycleViewModel
 }
