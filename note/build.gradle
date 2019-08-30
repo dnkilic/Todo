@@ -37,9 +37,12 @@ dependencies {
     kapt library.google.daggerCompiler
 
     testImplementation library.test.junit
+    testImplementation library.test.mockk
+    testImplementation library.test.robolectric
 
     androidTestImplementation library.test.archCoreTesting
     androidTestImplementation library.test.extJunit
     androidTestImplementation library.test.roomTesting
     androidTestImplementation library.test.runner
+    androidTestImplementation library.test.mockkAndroid
 }
