@@ -1,16 +1,35 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-
 buildscript {
-    ext.kotlin_version = '1.3.50'
+    ext.versions = [
+            'targetSdk' : 29,
+            'minSdk' : 21,
+            'kotlin' : '1.3.50',
+            'androidGradle' : '3.5.0',
+            'dagger' : '2.24'
+    ]
+
+    ext.library = [
+            kotlin : [
+                    'stdlib7' : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}"
+            ],
+            google : [
+                    'dagger' : "com.google.dagger:dagger:${versions.dagger}",
+                    'daggerCompiler' : "com.google.dagger:dagger-compiler:${versions.dagger}"
+            ]
+    ]
+
+    ext.plugin = [
+            kotlin : ['gradle': "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"],
+            android : ['gradle': "com.android.tools.build:gradle:${versions.androidGradle}"]
+    ]
+
     repositories {
         google()
         jcenter()
     }
+
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.0'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+        classpath plugin.android.gradle
+        classpath plugin.kotlin.gradle
     }
 }
 

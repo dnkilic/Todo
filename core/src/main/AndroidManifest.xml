@@ -1,1 +1,6 @@
-<manifest package="com.dnkilic.todo.core" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.dnkilic.todo.core">
+
+    <application android:name=".application.TodoApplication" />
+
+</manifest>
