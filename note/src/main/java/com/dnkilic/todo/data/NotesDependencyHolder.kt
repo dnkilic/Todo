@@ -12,4 +12,8 @@ object NotesDependencyHolder {
             dashboardComponent = DaggerDashboardComponent.builder().coreComponent(TodoApplication.coreComponent).build()
         return dashboardComponent as DashboardComponent
     }
+
+    fun destroy() {
+        dashboardComponent = null
+    }
 }

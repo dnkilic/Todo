@@ -7,6 +7,7 @@ import com.dnkilic.todo.dashboard.DashboardFragment
 import com.dnkilic.todo.dashboard.model.DashboardContract
 import com.dnkilic.todo.dashboard.model.DashboardLocalData
 import com.dnkilic.todo.dashboard.model.DashboardRepository
+import com.dnkilic.todo.dashboard.viewmodel.DashboardViewModelFactory
 import com.dnkilic.todo.data.local.NoteDatabase
 import dagger.Component
 import dagger.Module
@@ -23,6 +24,10 @@ interface DashboardComponent {
 
 @Module
 class DashboardModule {
+
+    @Provides
+    @DashboardScope
+    fun dashboardViewModelFactory(repository: DashboardContract.Repository) = DashboardViewModelFactory(repository)
 
     @Provides
     @DashboardScope
