@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="RoundedText" parent="Widget.AppCompat.TextView">
+        <item name="android:padding">5dp</item>
+        <item name="android:background">@drawable/round_text_shape</item>
+    </style>
+</resources>

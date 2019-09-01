@@ -38,4 +38,5 @@ dependencies {
     api library.androidx.roomKtx
     api library.androidx.lifecycleExtensions
     api library.androidx.lifecycleViewModel
+    api library.androidx.recyclerView
 }
