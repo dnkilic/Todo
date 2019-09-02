@@ -39,4 +39,5 @@ dependencies {
     api library.androidx.lifecycleExtensions
     api library.androidx.lifecycleViewModel
     api library.androidx.recyclerView
+    api library.androidx.recyclerViewSelection
 }

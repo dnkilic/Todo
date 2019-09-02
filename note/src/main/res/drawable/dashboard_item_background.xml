@@ -3,14 +3,22 @@
     <item android:state_pressed="true" >
         <shape android:shape="rectangle">
             <corners android:radius="@dimen/dashboard_item_radius" />
-            <stroke android:width="@dimen/dashboard_item_stroke" android:color="@color/white" />
+            <stroke android:width="@dimen/dashboard_item_stroke" android:color="@color/black" />
             <solid android:color="@color/white_50" />
         </shape>
     </item>
-    <item android:state_pressed="false">
+    <item android:state_activated="false">
         <shape android:shape="rectangle">
             <corners android:radius="@dimen/dashboard_item_radius" />
             <stroke android:width="@dimen/dashboard_item_stroke" android:color="@color/white_50" />
+            <solid android:color="@color/white_50" />
+        </shape>
+    </item>
+
+    <item android:state_activated="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/dashboard_item_radius" />
+            <stroke android:width="@dimen/dashboard_item_stroke" android:color="@color/black" />
             <solid android:color="@color/white_50" />
         </shape>
     </item>

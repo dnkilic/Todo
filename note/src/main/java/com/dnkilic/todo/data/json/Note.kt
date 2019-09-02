@@ -10,7 +10,8 @@ data class Note(
     @ColumnInfo val title: String,
     @ColumnInfo val description: String,
     @ColumnInfo val dueDate: Long,
-    @ColumnInfo val tags: List<String>
+    @ColumnInfo val tags: List<String>,
+    @ColumnInfo val isCompleted: Boolean
 ): Comparable<Note> {
     override fun compareTo(other: Note) = when {
         other.dueDate > dueDate -> -1

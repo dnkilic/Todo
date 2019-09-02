@@ -24,32 +24,34 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dashboard_item_margin"
         android:maxLines="@integer/dashboard_item_description_max_lines"
+        android:ellipsize="end"
         app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintBottom_toTopOf="@id/label"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."/>
 
-
     <TextView
         style="@style/RoundedText"
-        android:id="@+id/tag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dashboard_item_margin"
-        app:layout_constraintTop_toBottomOf="@id/description"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:text="Tag"/>
-
-    <TextView
-        style="@style/RoundedText"
-        android:id="@+id/tagCount"
+        android:id="@+id/label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dashboard_item_margin"
         android:visibility="gone"
         app:layout_constraintTop_toBottomOf="@id/description"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tag"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="visible"
+        tools:text="Tag"/>
+
+    <TextView
+        style="@style/RoundedText"
+        android:id="@+id/labelCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dashboard_item_margin"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/label"
         tools:visibility="visible"
         tools:text="+5"/>
 

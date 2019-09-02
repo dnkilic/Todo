@@ -34,7 +34,8 @@ buildscript {
                     'roomCompiler' : "androidx.room:room-compiler:${versions.room}",
                     'lifecycleExtensions' : "androidx.lifecycle:lifecycle-extensions:${versions.lifecycle}",
                     'lifecycleViewModel' : "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycle}",
-                    'recyclerView' : "androidx.recyclerview:recyclerview:${versions.recyclerView}"
+                    'recyclerView' : "androidx.recyclerview:recyclerview:${versions.recyclerView}",
+                    'recyclerViewSelection' : "androidx.recyclerview:recyclerview-selection:${versions.recyclerView}"
             ],
             test : [
                     'junit' : "junit:junit:${versions.junit}",

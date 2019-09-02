@@ -12,7 +12,8 @@ object FakeNoteFactory : FakeNote {
             title = "foo",
             description = "bar",
             dueDate = 10,
-            tags = emptyList()
+            tags = emptyList(),
+            isCompleted = false
         )
     }
 
