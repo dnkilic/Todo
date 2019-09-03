@@ -53,9 +53,17 @@ class DashboardLocalDataTest {
     @Test
     fun deleteNotes() = runBlocking {
         db.noteDao().insertAll(dummyNotes)
-        dashboardLocalData.deleteNotes(dummyNotes)
+        dashboardLocalData.deleteNotes(dummyNotes.map { it.id })
         val notes = db.noteDao().getAll()
         Assert.assertEquals(notes.size, 0)
+    }
+
+    @Test
+    fun completeNotes() = runBlocking {
+        db.noteDao().insertAll(dummyNotes)
+        dashboardLocalData.completeNotes(dummyNotes.map { it.id }.filter { it < 3 })
+        val notes = db.noteDao().getAll().filter { it.isCompleted }
+        Assert.assertEquals(notes.size, 2)
     }
 
     @After

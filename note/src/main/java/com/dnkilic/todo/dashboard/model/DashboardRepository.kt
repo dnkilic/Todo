@@ -4,6 +4,10 @@ import com.dnkilic.todo.data.json.Note
 
 class DashboardRepository(private val local: DashboardContract.Local) : DashboardContract.Repository {
 
+    override suspend fun completeNotes(noteIds: List<Long>) {
+        local.completeNotes(noteIds)
+    }
+
     override suspend fun getNotes() = local.getNotes()
 
     override suspend fun searchNotes(query: String): List<Note> {
@@ -16,7 +20,7 @@ class DashboardRepository(private val local: DashboardContract.Local) : Dashboar
         local.deleteNote(id)
     }
 
-    override suspend fun deleteNotes(notes: List<Note>) {
-        local.deleteNotes(notes)
+    override suspend fun deleteNotes(noteIds: List<Long>) {
+        local.deleteNotes(noteIds)
     }
 }

@@ -8,6 +8,8 @@ import androidx.recyclerview.selection.SelectionTracker
 import androidx.recyclerview.widget.RecyclerView
 import com.dnkilic.todo.R
 import com.dnkilic.todo.core.extension.autoNotify
+import com.dnkilic.todo.core.extension.gone
+import com.dnkilic.todo.core.extension.visible
 import com.dnkilic.todo.data.json.Note
 import kotlinx.android.synthetic.main.dashboard_item.view.*
 import kotlin.properties.Delegates
@@ -16,10 +18,6 @@ class DashboardAdapter(private val clickListener: (Long) -> Unit)
     : RecyclerView.Adapter<DashboardAdapter.DashboardItemViewHolder>() {
 
     var tracker: SelectionTracker<Long>? = null
-
-    init {
-        setHasStableIds(true)
-    }
 
     private var notes: List<Note> by Delegates.observable(emptyList()) { _, oldList, newList ->
         autoNotify(oldList, newList) { o, n -> o.id == n.id }
@@ -54,11 +52,21 @@ class DashboardAdapter(private val clickListener: (Long) -> Unit)
             itemView.isActivated = isActivated
             if (note.tags.isNotEmpty()) {
                 itemView.label.text = note.tags.first()
-                itemView.label.visibility = View.VISIBLE
+                itemView.label.visible()
                 if (note.tags.size > 1) {
                     itemView.labelCount.text = "+${note.tags.size - 1}"
-                    itemView.labelCount.visibility = View.VISIBLE
+                    itemView.labelCount.visible()
+                } else {
+                    itemView.labelCount.gone()
                 }
+            } else {
+                itemView.label.gone()
+            }
+
+            if (note.isCompleted) {
+                itemView.completed.visible()
+            } else {
+                itemView.completed.gone()
             }
         }
 

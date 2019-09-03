@@ -40,4 +40,6 @@ dependencies {
     api library.androidx.lifecycleViewModel
     api library.androidx.recyclerView
     api library.androidx.recyclerViewSelection
+    api library.jakewharton.timber
+    api library.google.material
 }

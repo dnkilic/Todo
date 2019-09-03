@@ -32,6 +32,7 @@ android {
 
 dependencies {
     implementation project(':core')
+    implementation library.facebook.shimmer
 
     kapt library.androidx.roomCompiler
     kapt library.google.daggerCompiler

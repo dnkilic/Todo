@@ -15,7 +15,10 @@ buildscript {
             'runner' : '1.2.0',
             'mockk' : '1.9.3',
             'robolectric' : '4.3',
-            'recyclerView' : '1.0.0'
+            'recyclerView' : '1.0.0',
+            'timber' : '4.7.1',
+            'shimmer' : '0.4.0',
+            'material' : '1.0.0'
     ]
 
     ext.library = [
@@ -24,7 +27,8 @@ buildscript {
             ],
             google : [
                     'dagger' : "com.google.dagger:dagger:${versions.dagger}",
-                    'daggerCompiler' : "com.google.dagger:dagger-compiler:${versions.dagger}"
+                    'daggerCompiler' : "com.google.dagger:dagger-compiler:${versions.dagger}",
+                    'material' : "com.google.android.material:material:${versions.material}",
             ],
             androidx : [
                     'appcompat' : "androidx.appcompat:appcompat:${versions.appcompat}",
@@ -46,7 +50,13 @@ buildscript {
                     'mockk' : "io.mockk:mockk:${versions.mockk}",
                     'mockkAndroid' : "io.mockk:mockk-android:${versions.mockk}",
                     'robolectric' : "org.robolectric:robolectric:${versions.robolectric}",
-            ]
+            ],
+            jakewharton : [
+                    'timber' : "com.jakewharton.timber:timber:${versions.timber}",
+            ],
+            facebook : [
+                    'shimmer' : "com.facebook.shimmer:shimmer:${versions.shimmer}"
+            ],
     ]
 
     ext.plugin = [

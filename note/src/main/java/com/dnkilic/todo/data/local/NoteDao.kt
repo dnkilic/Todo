@@ -23,4 +23,7 @@ interface NoteDao {
 
     @Delete
     suspend fun delete(notes: List<Note>)
+
+    @Query("UPDATE notes SET isCompleted = 1 WHERE id == :id")
+    suspend fun complete(id: Long)
 }

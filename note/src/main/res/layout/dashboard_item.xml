@@ -18,6 +18,19 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:text="Title of Task"/>
 
+    <ImageView
+        android:id="@+id/completed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_complete_green"
+        android:layout_marginStart="@dimen/dashboard_item_margin"
+        android:visibility="gone"
+        app:layout_constraintStart_toEndOf="@id/title"
+        app:layout_constraintTop_toTopOf="@id/title"
+        app:layout_constraintBottom_toBottomOf="@id/title"
+        tools:visibility="visible"
+        tools:ignore="ContentDescription" />
+
     <TextView
         android:id="@+id/description"
         android:layout_width="match_parent"

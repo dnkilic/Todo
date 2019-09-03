@@ -1,9 +1,7 @@
-package com.dnkilic.todo.dashboard
+package com.dnkilic.todo.dashboard.model
 
 import android.os.Build
 import com.dnkilic.todo.FakeNoteFactory
-import com.dnkilic.todo.dashboard.model.DashboardContract
-import com.dnkilic.todo.dashboard.model.DashboardRepository
 import io.mockk.coEvery
 import io.mockk.spyk
 import kotlinx.coroutines.runBlocking

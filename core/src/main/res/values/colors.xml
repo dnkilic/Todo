@@ -6,6 +6,7 @@
 
     <color name="white">#FFFFFF</color>
     <color name="white_50">#80d8d8d8</color>
+    <color name="white_20">#4DD8D8D8</color>
     <color name="black">#000000</color>
     <color name="dark_grey">#212121</color>
     <color name="material_red_900">#B71C1C</color>

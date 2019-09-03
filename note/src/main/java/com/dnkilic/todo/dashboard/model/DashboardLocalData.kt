@@ -5,6 +5,10 @@ import com.dnkilic.todo.data.local.NoteDatabase
 
 class DashboardLocalData(private val noteDatabase: NoteDatabase) : DashboardContract.Local {
 
+    override suspend fun completeNotes(noteIds: List<Long>) {
+        noteIds.forEach { noteDatabase.noteDao().complete(it) }
+    }
+
     override suspend fun getNotes() = noteDatabase.noteDao().getAll()
 
 
@@ -18,7 +22,7 @@ class DashboardLocalData(private val noteDatabase: NoteDatabase) : DashboardCont
         noteDatabase.noteDao().deleteNoteBy(id)
     }
 
-    override suspend fun deleteNotes(notes: List<Note>) {
-        noteDatabase.noteDao().delete(notes)
+    override suspend fun deleteNotes(noteIds: List<Long>) {
+        noteIds.forEach { noteDatabase.noteDao().deleteNoteBy(it) }
     }
 }

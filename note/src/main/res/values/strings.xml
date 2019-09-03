@@ -4,4 +4,5 @@
     <string name="create">Create a task…</string>
     <string name="delete">Delete</string>
     <string name="complete">Complete</string>
+    <string name="error_generic">Something went wrong!</string>
 </resources>

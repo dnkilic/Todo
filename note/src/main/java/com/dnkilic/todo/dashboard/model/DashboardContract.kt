@@ -8,7 +8,8 @@ interface DashboardContract {
         suspend fun searchNotes(query: String): List<Note>
         suspend fun getNote(id: Long): Note
         suspend fun deleteNote(id: Long)
-        suspend fun deleteNotes(notes: List<Note>)
+        suspend fun deleteNotes(noteIds: List<Long>)
+        suspend fun completeNotes(noteIds: List<Long>)
     }
 
     interface Local {
@@ -16,6 +17,7 @@ interface DashboardContract {
         suspend fun searchNotes(query: String): List<Note>
         suspend fun getNote(id: Long): Note
         suspend fun deleteNote(id: Long)
-        suspend fun deleteNotes(notes: List<Note>)
+        suspend fun deleteNotes(noteIds: List<Long>)
+        suspend fun completeNotes(noteIds: List<Long>)
     }
 }

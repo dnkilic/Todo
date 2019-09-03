@@ -8,19 +8,24 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.ActionMode
 import androidx.appcompat.widget.SearchView
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.selection.SelectionPredicates
 import androidx.recyclerview.selection.SelectionTracker
-import androidx.recyclerview.selection.StableIdKeyProvider
 import androidx.recyclerview.selection.StorageStrategy
 import com.dnkilic.todo.R
 import com.dnkilic.todo.core.base.BaseFragment
+import com.dnkilic.todo.core.extension.gone
+import com.dnkilic.todo.core.extension.visible
+import com.dnkilic.todo.core.model.Resource
 import com.dnkilic.todo.dashboard.adapter.DashboardAdapter
+import com.dnkilic.todo.dashboard.adapter.DashboardItemKeyProvider
 import com.dnkilic.todo.dashboard.adapter.DashboardItemsLookup
 import com.dnkilic.todo.dashboard.viewmodel.DashboardViewModel
 import com.dnkilic.todo.dashboard.viewmodel.DashboardViewModelFactory
 import com.dnkilic.todo.data.NotesDependencyHolder
 import com.dnkilic.todo.data.json.Note
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.dashboard_fragment.*
 import javax.inject.Inject
 
@@ -40,6 +45,7 @@ class DashboardFragment : BaseFragment(), ActionMode.Callback {
 
     private lateinit var adapter: DashboardAdapter
     private lateinit var tracker: SelectionTracker<Long>
+    private lateinit var rootView: View
     private var actionMode: ActionMode? = null
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -47,16 +53,31 @@ class DashboardFragment : BaseFragment(), ActionMode.Callback {
         setHasOptionsMenu(true)
         component.inject(this)
         viewModel.getNotes()
+        viewModel.notesResource.observe(this, Observer {
+            when (it) {
+                is Resource.Success -> {
+                    stopShimmer()
+                    adapter.updateList(it.data)
+                }
+                is Resource.Loading -> { startShimmer() }
+                is Resource.Failure -> {
+                    stopShimmer()
+                    showError(getString(R.string.error_generic))
+                }
+            }
+        })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        rootView = view
         createNote.setOnClickListener {
             // TODO show detail
         }
         adapter = DashboardAdapter {
             // TODO show detail
         }
+        adapter.setHasStableIds(true)
         tasksRecyclerView.adapter = adapter
 
         initMultiSelectionTracker().addObserver(object : SelectionTracker.SelectionObserver<Long>() {
@@ -98,12 +119,12 @@ class DashboardFragment : BaseFragment(), ActionMode.Callback {
     override fun onActionItemClicked(mode: ActionMode, item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_delete -> {
-                // TODO delete
+                viewModel.delete(tracker.selection.map { it })
                 mode.finish()
                 return true
             }
             R.id.action_complete -> {
-                // TODO complete
+                viewModel.complete(tracker.selection.map { it })
                 mode.finish()
                 return true
             }
@@ -143,13 +164,31 @@ class DashboardFragment : BaseFragment(), ActionMode.Callback {
     private fun initMultiSelectionTracker(): SelectionTracker<Long> {
         tracker = SelectionTracker.Builder<Long>(
             SELECTION_ID, tasksRecyclerView,
-            StableIdKeyProvider(tasksRecyclerView),
+            DashboardItemKeyProvider(tasksRecyclerView),
             DashboardItemsLookup(tasksRecyclerView),
             StorageStrategy.createLongStorage())
             .withSelectionPredicate(SelectionPredicates.createSelectAnything())
             .build()
 
         return tracker
+    }
+
+    private fun showError(message: String) {
+        Snackbar.make(rootView, message, Snackbar.LENGTH_SHORT).show()
+    }
+
+    private fun stopShimmer() {
+        shimmerLayout.apply {
+            gone()
+            stopShimmer()
+        }
+    }
+
+    private fun startShimmer() {
+        shimmerLayout.apply {
+            startShimmer()
+            visible()
+        }
     }
 
     private companion object {
