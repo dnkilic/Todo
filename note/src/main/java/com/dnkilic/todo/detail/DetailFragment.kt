@@ -1,10 +1,8 @@
 package com.dnkilic.todo.detail
 
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProviders
 import com.dnkilic.todo.R
 import com.dnkilic.todo.core.base.BaseFragment
-import com.dnkilic.todo.detail.viewmodel.DetailViewModel
 
 class DetailFragment : BaseFragment() {
 
@@ -20,13 +18,10 @@ class DetailFragment : BaseFragment() {
         }
     }
 
-    private lateinit var viewModel: DetailViewModel
-
     override fun getLayoutId() = R.layout.detail_fragment
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(DetailViewModel::class.java)
     }
 
 }
