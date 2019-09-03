@@ -76,6 +76,6 @@ class DashboardViewModel(private val repo: DashboardContract.Repository) : ViewM
 
     override fun onCleared() {
         super.onCleared()
-        NotesDependencyHolder.destroy()
+        NotesDependencyHolder.destroyDashboardComponent()
     }
 }
