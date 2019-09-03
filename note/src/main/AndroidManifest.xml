@@ -9,8 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".dashboard.DashboardActivity"
-            android:windowSoftInputMode="adjustNothing" >
+        <activity
+            android:name=".detail.DetailActivity"
+            android:parentActivityName=".dashboard.DashboardActivity" />
+        <activity
+            android:name=".dashboard.DashboardActivity"
+            android:windowSoftInputMode="adjustNothing">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

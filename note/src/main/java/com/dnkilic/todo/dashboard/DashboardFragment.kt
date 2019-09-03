@@ -24,7 +24,8 @@ import com.dnkilic.todo.dashboard.adapter.DashboardItemsLookup
 import com.dnkilic.todo.dashboard.viewmodel.DashboardViewModel
 import com.dnkilic.todo.dashboard.viewmodel.DashboardViewModelFactory
 import com.dnkilic.todo.data.NotesDependencyHolder
-import com.dnkilic.todo.data.json.Note
+import com.dnkilic.todo.data.RC_TASK_DETAIL
+import com.dnkilic.todo.detail.DetailIntent
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.dashboard_fragment.*
 import javax.inject.Inject
@@ -71,12 +72,8 @@ class DashboardFragment : BaseFragment(), ActionMode.Callback {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         rootView = view
-        createNote.setOnClickListener {
-            // TODO show detail
-        }
-        adapter = DashboardAdapter {
-            // TODO show detail
-        }
+        createNote.setOnClickListener { openDetailScreen() }
+        adapter = DashboardAdapter { openDetailScreen(it) }
         adapter.setHasStableIds(true)
         tasksRecyclerView.adapter = adapter
 
@@ -188,6 +185,14 @@ class DashboardFragment : BaseFragment(), ActionMode.Callback {
         shimmerLayout.apply {
             startShimmer()
             visible()
+        }
+    }
+
+    private fun openDetailScreen(id: Long? = null) {
+        if (id == null) {
+            startActivityForResult(DetailIntent(context!!), RC_TASK_DETAIL)
+        } else {
+            startActivityForResult(DetailIntent(context!!, id), RC_TASK_DETAIL)
         }
     }
 
