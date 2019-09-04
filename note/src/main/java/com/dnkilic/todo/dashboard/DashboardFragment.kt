@@ -61,7 +61,7 @@ class DashboardFragment : BaseFragment(), ActionMode.Callback {
             when (it) {
                 is Resource.Success -> {
                     stopShimmer()
-                    adapter.updateList(it.data)
+                    adapter.updateList(it.data.sorted())
                 }
                 is Resource.Loading ->
                     startShimmer()

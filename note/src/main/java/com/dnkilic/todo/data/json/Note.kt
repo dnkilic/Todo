@@ -14,8 +14,14 @@ data class Note(
     @ColumnInfo val isCompleted: Boolean
 ): Comparable<Note> {
     override fun compareTo(other: Note) = when {
-        other.dueDate > dueDate -> -1
-        other.dueDate < dueDate -> 1
-        else -> 0
+        !other.isCompleted && isCompleted -> 1
+        other.isCompleted && !isCompleted -> -1
+        else -> when {
+            dueDate == -1L -> 1
+            other.dueDate == -1L -> -1
+            other.dueDate > dueDate -> -1
+            other.dueDate < dueDate -> 1
+            else -> 0
+        }
     }
 }
