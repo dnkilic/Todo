@@ -118,7 +118,7 @@ class DashboardFragment : BaseFragment(), ActionMode.Callback {
             }
 
             override fun onQueryTextChange(newText: String): Boolean {
-                // TODO search
+                viewModel.search(newText)
                 return false
             }
         })

@@ -13,7 +13,7 @@ class DashboardLocalData(private val noteDatabase: NoteDatabase) : DashboardCont
 
 
     override suspend fun searchNotes(query: String): List<Note> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return noteDatabase.noteDao().search("%$query%")
     }
 
     override suspend fun getNote(id: Long) = noteDatabase.noteDao().getNoteBy(id)

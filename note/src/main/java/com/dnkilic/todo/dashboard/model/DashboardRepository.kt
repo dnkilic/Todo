@@ -11,7 +11,7 @@ class DashboardRepository(private val local: DashboardContract.Local) : Dashboar
     override suspend fun getNotes() = local.getNotes()
 
     override suspend fun searchNotes(query: String): List<Note> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return local.searchNotes(query)
     }
 
     override suspend fun getNote(id: Long) = local.getNote(id)

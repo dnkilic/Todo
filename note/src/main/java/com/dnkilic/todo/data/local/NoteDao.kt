@@ -26,4 +26,7 @@ interface NoteDao {
 
     @Query("UPDATE notes SET isCompleted = 1 WHERE id == :id")
     suspend fun complete(id: Long)
+
+    @Query("SELECT * FROM notes WHERE title LIKE :query OR tags LIKE :query OR description LIKE :query")
+    suspend fun search(query: String): List<Note>
 }
