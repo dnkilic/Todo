@@ -9,6 +9,7 @@ import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.dnkilic.todo.R
+import com.dnkilic.todo.alarm.AlarmBroadcastReceiver
 import com.dnkilic.todo.core.base.BaseFragment
 import com.dnkilic.todo.core.extension.visible
 import com.dnkilic.todo.core.model.Resource
@@ -198,8 +199,17 @@ class DetailFragment : BaseFragment() {
     private fun saveNote(): Boolean {
         return if (validate()) {
             when (mode) {
-                DetailMode.ADD -> { viewModel.createNote(note()) }
-                DetailMode.EDIT -> { viewModel.updateNote(note(id)) }
+                DetailMode.ADD -> {
+                    val note = note()
+                    AlarmBroadcastReceiver.setAlarm(context!!, note.id, note.title, note.description, note.dueDate)
+                    viewModel.createNote(note)
+                }
+                DetailMode.EDIT -> {
+                    AlarmBroadcastReceiver.cancelAlarm(context!!, id)
+                    val note = note(id)
+                    viewModel.updateNote(note)
+                    AlarmBroadcastReceiver.setAlarm(context!!, note.id, note.title, note.description, note.dueDate)
+                }
             }
             true
         } else {
@@ -210,6 +220,7 @@ class DetailFragment : BaseFragment() {
 
     private fun completeNote(): Boolean {
         return if (validate()) {
+            AlarmBroadcastReceiver.cancelAlarm(context!!, id)
             viewModel.updateNote(note(id).copy(isCompleted = true))
             true
         } else {

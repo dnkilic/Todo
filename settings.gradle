@@ -1,2 +1,2 @@
-include ':note', ':core'
+include ':note', ':core', ':notification'
 rootProject.name='Todo'

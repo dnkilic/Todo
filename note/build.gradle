@@ -32,6 +32,7 @@ android {
 
 dependencies {
     implementation project(':core')
+    implementation project(':notification')
     implementation library.facebook.shimmer
 
     kapt library.androidx.roomCompiler

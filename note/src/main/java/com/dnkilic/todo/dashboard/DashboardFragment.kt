@@ -16,6 +16,7 @@ import androidx.recyclerview.selection.SelectionPredicates
 import androidx.recyclerview.selection.SelectionTracker
 import androidx.recyclerview.selection.StorageStrategy
 import com.dnkilic.todo.R
+import com.dnkilic.todo.alarm.AlarmBroadcastReceiver
 import com.dnkilic.todo.core.base.BaseFragment
 import com.dnkilic.todo.core.extension.gone
 import com.dnkilic.todo.core.extension.visible
@@ -63,8 +64,7 @@ class DashboardFragment : BaseFragment(), ActionMode.Callback {
                     stopShimmer()
                     adapter.updateList(it.data.sorted())
                 }
-                is Resource.Loading ->
-                    startShimmer()
+                is Resource.Loading -> startShimmer()
                 is Resource.Failure -> {
                     stopShimmer()
                     showError(getString(R.string.error_generic))
@@ -127,12 +127,20 @@ class DashboardFragment : BaseFragment(), ActionMode.Callback {
     override fun onActionItemClicked(mode: ActionMode, item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_delete -> {
-                viewModel.delete(tracker.selection.map { it })
+                val notes = tracker.selection.map { it }
+                notes.forEach {
+                    AlarmBroadcastReceiver.cancelAlarm(context!!, it)
+                }
+                viewModel.delete(notes)
                 mode.finish()
                 return true
             }
             R.id.action_complete -> {
-                viewModel.complete(tracker.selection.map { it })
+                val notes = tracker.selection.map { it }
+                notes.forEach {
+                    AlarmBroadcastReceiver.cancelAlarm(context!!, it)
+                }
+                viewModel.complete(notes)
                 mode.finish()
                 return true
             }

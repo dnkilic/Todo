@@ -12,4 +12,5 @@
     <string name="label">Add Tag</string>
     <string name="date">Set Due Date</string>
     <string name="error_input">\"Title or Description must be filled!\"</string>
+    <string name="action_notify_task_due_date">action_notify_task_due_date</string>
 </resources>

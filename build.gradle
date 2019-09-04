@@ -1,67 +1,69 @@
 buildscript {
     ext.versions = [
-            'targetSdk' : 29,
-            'minSdk' : 21,
-            'kotlin' : '1.3.50',
-            'androidGradle' : '3.5.0',
-            'dagger' : '2.24',
-            'constraintlayout' : '1.1.3',
-            'appcompat' : '1.1.0-rc01',
-            'junit' : '4.12',
-            'junitExt' : '1.1.1',
-            'room' : '2.1.0',
+            'targetSdk'       : 29,
+            'minSdk'          : 21,
+            'kotlin'          : '1.3.50',
+            'androidGradle'   : '3.5.0',
+            'dagger'          : '2.24',
+            'constraintlayout': '1.1.3',
+            'appcompat'       : '1.1.0-rc01',
+            'junit'           : '4.12',
+            'junitExt'        : '1.1.1',
+            'room'            : '2.1.0',
             'archCoreTesting' : '2.1.0-rc01',
-            'lifecycle' : '2.2.0-alpha02',
-            'runner' : '1.2.0',
-            'mockk' : '1.9.3',
-            'robolectric' : '4.3',
-            'recyclerView' : '1.0.0',
-            'timber' : '4.7.1',
-            'shimmer' : '0.4.0',
-            'material' : '1.0.0'
+            'lifecycle'       : '2.2.0-alpha02',
+            'runner'          : '1.2.0',
+            'mockk'           : '1.9.3',
+            'robolectric'     : '4.3',
+            'recyclerView'    : '1.0.0',
+            'timber'          : '4.7.1',
+            'shimmer'         : '0.4.0',
+            'material'        : '1.0.0',
+            'coreKtx'         : '1.0.2'
     ]
 
     ext.library = [
-            kotlin : [
-                    'stdlib7' : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}"
+            kotlin     : [
+                    'stdlib7': "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}"
             ],
-            google : [
-                    'dagger' : "com.google.dagger:dagger:${versions.dagger}",
-                    'daggerCompiler' : "com.google.dagger:dagger-compiler:${versions.dagger}",
-                    'material' : "com.google.android.material:material:${versions.material}",
+            google     : [
+                    'dagger'        : "com.google.dagger:dagger:${versions.dagger}",
+                    'daggerCompiler': "com.google.dagger:dagger-compiler:${versions.dagger}",
+                    'material'      : "com.google.android.material:material:${versions.material}",
             ],
-            androidx : [
-                    'appcompat' : "androidx.appcompat:appcompat:${versions.appcompat}",
-                    'constraintlayout' : "androidx.constraintlayout:constraintlayout:${versions.constraintlayout}",
-                    'room' : "androidx.room:room-runtime:${versions.room}",
-                    'roomKtx' : "androidx.room:room-ktx:${versions.room}",
-                    'roomCompiler' : "androidx.room:room-compiler:${versions.room}",
-                    'lifecycleExtensions' : "androidx.lifecycle:lifecycle-extensions:${versions.lifecycle}",
-                    'lifecycleViewModel' : "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycle}",
-                    'recyclerView' : "androidx.recyclerview:recyclerview:${versions.recyclerView}",
-                    'recyclerViewSelection' : "androidx.recyclerview:recyclerview-selection:${versions.recyclerView}"
+            androidx   : [
+                    'appcompat'            : "androidx.appcompat:appcompat:${versions.appcompat}",
+                    'constraintlayout'     : "androidx.constraintlayout:constraintlayout:${versions.constraintlayout}",
+                    'room'                 : "androidx.room:room-runtime:${versions.room}",
+                    'roomKtx'              : "androidx.room:room-ktx:${versions.room}",
+                    'roomCompiler'         : "androidx.room:room-compiler:${versions.room}",
+                    'lifecycleExtensions'  : "androidx.lifecycle:lifecycle-extensions:${versions.lifecycle}",
+                    'lifecycleViewModel'   : "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycle}",
+                    'recyclerView'         : "androidx.recyclerview:recyclerview:${versions.recyclerView}",
+                    'recyclerViewSelection': "androidx.recyclerview:recyclerview-selection:${versions.recyclerView}",
+                    'coreKtx'              : "androidx.core:core-ktx:${versions.coreKtx}"
             ],
-            test : [
-                    'junit' : "junit:junit:${versions.junit}",
-                    'extJunit' : "androidx.test.ext:junit:${versions.junitExt}",
-                    'roomTesting' : "androidx.room:room-testing:${versions.room}",
-                    'archCoreTesting' : "androidx.arch.core:core-testing:${versions.archCoreTesting}",
-                    'runner' : "androidx.test:runner:${versions.runner}",
-                    'mockk' : "io.mockk:mockk:${versions.mockk}",
-                    'mockkAndroid' : "io.mockk:mockk-android:${versions.mockk}",
-                    'robolectric' : "org.robolectric:robolectric:${versions.robolectric}",
+            test       : [
+                    'junit'          : "junit:junit:${versions.junit}",
+                    'extJunit'       : "androidx.test.ext:junit:${versions.junitExt}",
+                    'roomTesting'    : "androidx.room:room-testing:${versions.room}",
+                    'archCoreTesting': "androidx.arch.core:core-testing:${versions.archCoreTesting}",
+                    'runner'         : "androidx.test:runner:${versions.runner}",
+                    'mockk'          : "io.mockk:mockk:${versions.mockk}",
+                    'mockkAndroid'   : "io.mockk:mockk-android:${versions.mockk}",
+                    'robolectric'    : "org.robolectric:robolectric:${versions.robolectric}",
             ],
-            jakewharton : [
-                    'timber' : "com.jakewharton.timber:timber:${versions.timber}",
+            jakewharton: [
+                    'timber': "com.jakewharton.timber:timber:${versions.timber}",
             ],
-            facebook : [
-                    'shimmer' : "com.facebook.shimmer:shimmer:${versions.shimmer}"
+            facebook   : [
+                    'shimmer': "com.facebook.shimmer:shimmer:${versions.shimmer}"
             ],
     ]
 
     ext.plugin = [
             kotlin : ['gradle': "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"],
-            android : ['gradle': "com.android.tools.build:gradle:${versions.androidGradle}"]
+            android: ['gradle': "com.android.tools.build:gradle:${versions.androidGradle}"]
     ]
 
     repositories {
