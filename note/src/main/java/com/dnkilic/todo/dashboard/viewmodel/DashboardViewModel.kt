@@ -70,6 +70,18 @@ class DashboardViewModel(private val repo: DashboardContract.Repository) : ViewM
         }
     }
 
+    fun refresh() {
+        viewModelScope.launch {
+            try {
+                val notes = repo.getNotes()
+                notesMutableLiveData.success(notes)
+            } catch (exception: Exception) {
+                Timber.e(exception)
+                handleError(notesMutableLiveData, exception)
+            }
+        }
+    }
+
     private fun handleError(itemMutableLiveData: MutableLiveData<Resource<List<Note>>>, throwable: Throwable) {
         itemMutableLiveData.failed(throwable)
     }

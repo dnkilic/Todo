@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_label"
+        android:icon="@drawable/ic_label"
+        app:showAsAction="ifRoom|collapseActionView"
+        android:title="@string/label" />
+
+    <item
+        android:id="@+id/action_date"
+        android:icon="@drawable/ic_date"
+        app:showAsAction="ifRoom|collapseActionView"
+        android:title="@string/date" />
+
+    <item
+        android:visible="false"
+        android:id="@+id/action_complete"
+        android:icon="@drawable/ic_complete"
+        app:showAsAction="always"
+        android:title="@string/complete" />
+
+    <item
+        android:id="@+id/action_save"
+        android:icon="@drawable/ic_save"
+        app:showAsAction="always"
+        android:title="@string/save" />
+
+</menu>

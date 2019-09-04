@@ -11,7 +11,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".detail.DetailActivity"
-            android:parentActivityName=".dashboard.DashboardActivity" />
+            android:parentActivityName=".dashboard.DashboardActivity"
+            android:theme="@style/DetailTheme"/>
         <activity
             android:name=".dashboard.DashboardActivity"
             android:windowSoftInputMode="adjustNothing">

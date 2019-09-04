@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="search">Search your tasks</string>
-    <string name="create">Create a task…</string>
+    <string name="create_task">Create a task…</string>
     <string name="delete">Delete</string>
-    <string name="complete">Complete</string>
+    <string name="complete">Complete Task</string>
     <string name="error_generic">Something went wrong!</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="tag">Enter Tag</string>
+    <string name="save">Save Task</string>
+    <string name="label">Add Tag</string>
+    <string name="date">Set Due Date</string>
+    <string name="error_input">\"Title or Description must be filled!\"</string>
 </resources>

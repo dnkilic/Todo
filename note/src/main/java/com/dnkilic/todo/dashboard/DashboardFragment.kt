@@ -1,5 +1,7 @@
 package com.dnkilic.todo.dashboard
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
@@ -28,6 +30,7 @@ import com.dnkilic.todo.data.RC_TASK_DETAIL
 import com.dnkilic.todo.detail.DetailIntent
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.dashboard_fragment.*
+import kotlinx.android.synthetic.main.dashboard_fragment.shimmerLayout
 import javax.inject.Inject
 
 
@@ -60,7 +63,8 @@ class DashboardFragment : BaseFragment(), ActionMode.Callback {
                     stopShimmer()
                     adapter.updateList(it.data)
                 }
-                is Resource.Loading -> { startShimmer() }
+                is Resource.Loading ->
+                    startShimmer()
                 is Resource.Failure -> {
                     stopShimmer()
                     showError(getString(R.string.error_generic))
@@ -90,6 +94,13 @@ class DashboardFragment : BaseFragment(), ActionMode.Callback {
         })
 
         adapter.tracker = tracker
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when {
+            requestCode == RC_TASK_DETAIL && resultCode == Activity.RESULT_OK -> viewModel.refresh()
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

@@ -16,6 +16,7 @@
         android:layout_margin="@dimen/dashboard_item_margin"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/description"
         tools:text="Title of Task"/>
 
     <ImageView

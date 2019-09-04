@@ -47,10 +47,20 @@ class DashboardAdapter(private val clickListener: (Long) -> Unit)
 
         fun bind(note: Note, isActivated: Boolean = false) = with(itemView) {
             itemView.setOnClickListener { clickListener.invoke(note.id) }
-            itemView.title.text = note.title
-            itemView.description.text = note.description
+            if (note.title.isNotBlank()) {
+                itemView.title.text = note.title
+            } else {
+                itemView.title.gone()
+            }
+
+            if (note.description.isNotBlank()) {
+                itemView.description.text = note.description
+            } else {
+                itemView.description.gone()
+            }
+
             itemView.isActivated = isActivated
-            if (note.tags.isNotEmpty()) {
+            if (note.tags.isNotEmpty() && note.tags.first().isNotBlank()) {
                 itemView.label.text = note.tags.first()
                 itemView.label.visible()
                 if (note.tags.size > 1) {
@@ -61,6 +71,7 @@ class DashboardAdapter(private val clickListener: (Long) -> Unit)
                 }
             } else {
                 itemView.label.gone()
+                itemView.labelCount.gone()
             }
 
             if (note.isCompleted) {
