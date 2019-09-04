@@ -12,8 +12,9 @@ import com.dnkilic.todo.R
 import com.dnkilic.todo.core.base.BaseFragment
 import com.dnkilic.todo.core.extension.visible
 import com.dnkilic.todo.core.model.Resource
-import com.dnkilic.todo.data.DATE_FORMAT
 import com.dnkilic.todo.data.NotesDependencyHolder
+import com.dnkilic.todo.data.dateToLong
+import com.dnkilic.todo.data.dateToString
 import com.dnkilic.todo.data.json.Note
 import com.dnkilic.todo.detail.adapter.TagAdapter
 import com.dnkilic.todo.detail.dialog.DatePickerFragment
@@ -24,7 +25,6 @@ import com.dnkilic.todo.detail.viewmodel.DetailViewModel
 import com.dnkilic.todo.detail.viewmodel.DetailViewModelFactory
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.detail_fragment.*
-import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
 
@@ -189,17 +189,6 @@ class DetailFragment : BaseFragment() {
 
     private fun showError(message: String) {
         Snackbar.make(rootView, message, Snackbar.LENGTH_SHORT).show()
-    }
-
-    private fun dateToLong(date: String): Long {
-        return SimpleDateFormat(DATE_FORMAT, Locale.ENGLISH).parse(date)!!.time
-    }
-
-    private fun dateToString(date: Long): String {
-        val formatter = SimpleDateFormat(DATE_FORMAT, Locale.ENGLISH)
-        val calendar = Calendar.getInstance()
-        calendar.timeInMillis = date
-        return formatter.format(calendar.time)
     }
 
     private fun validate(): Boolean {

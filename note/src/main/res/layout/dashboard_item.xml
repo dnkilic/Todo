@@ -19,6 +19,18 @@
         app:layout_constraintBottom_toTopOf="@id/description"
         tools:text="Title of Task"/>
 
+    <TextView
+        android:id="@+id/dueDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/dashboard_item_secondary_text_size"
+        android:layout_margin="@dimen/dashboard_item_margin"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="10.9.2012"
+        tools:visibility="visible" />
+
     <ImageView
         android:id="@+id/completed"
         android:layout_width="wrap_content"

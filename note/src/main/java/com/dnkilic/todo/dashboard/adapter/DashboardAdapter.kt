@@ -10,6 +10,7 @@ import com.dnkilic.todo.R
 import com.dnkilic.todo.core.extension.autoNotify
 import com.dnkilic.todo.core.extension.gone
 import com.dnkilic.todo.core.extension.visible
+import com.dnkilic.todo.data.dateToString
 import com.dnkilic.todo.data.json.Note
 import kotlinx.android.synthetic.main.dashboard_item.view.*
 import kotlin.properties.Delegates
@@ -57,6 +58,15 @@ class DashboardAdapter(private val clickListener: (Long) -> Unit)
                 itemView.description.text = note.description
             } else {
                 itemView.description.gone()
+            }
+
+            if (note.dueDate != -1L) {
+                itemView.dueDate.apply {
+                    visible()
+                    text = dateToString(note.dueDate)
+                }
+            } else {
+                itemView.dueDate.gone()
             }
 
             itemView.isActivated = isActivated
