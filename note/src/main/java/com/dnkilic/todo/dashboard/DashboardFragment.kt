@@ -77,6 +77,7 @@ class DashboardFragment : BaseFragment(), ActionMode.Callback {
         super.onViewCreated(view, savedInstanceState)
         rootView = view
         createNote.setOnClickListener { openDetailScreen() }
+        createNotes.setOnClickListener { viewModel.createNotes() }
         adapter = DashboardAdapter { openDetailScreen(it) }
         adapter.setHasStableIds(true)
         tasksRecyclerView.adapter = adapter

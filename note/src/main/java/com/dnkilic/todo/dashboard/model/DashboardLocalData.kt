@@ -25,4 +25,8 @@ class DashboardLocalData(private val noteDatabase: NoteDatabase) : DashboardCont
     override suspend fun deleteNotes(noteIds: List<Long>) {
         noteIds.forEach { noteDatabase.noteDao().deleteNoteBy(it) }
     }
+
+    override suspend fun insert(notes: List<Note>) {
+        noteDatabase.noteDao().insertAll(notes)
+    }
 }

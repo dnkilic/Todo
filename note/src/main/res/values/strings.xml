@@ -2,6 +2,7 @@
 <resources>
     <string name="search">Search your tasks</string>
     <string name="create_task">Create a task…</string>
+    <string name="create_tasks">Create tasks…</string>
     <string name="delete">Delete</string>
     <string name="complete">Complete Task</string>
     <string name="error_generic">Something went wrong!</string>

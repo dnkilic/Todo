@@ -10,6 +10,7 @@ interface DashboardContract {
         suspend fun deleteNote(id: Long)
         suspend fun deleteNotes(noteIds: List<Long>)
         suspend fun completeNotes(noteIds: List<Long>)
+        suspend fun insert(notes: List<Note>)
     }
 
     interface Local {
@@ -19,5 +20,6 @@ interface DashboardContract {
         suspend fun deleteNote(id: Long)
         suspend fun deleteNotes(noteIds: List<Long>)
         suspend fun completeNotes(noteIds: List<Long>)
+        suspend fun insert(notes: List<Note>)
     }
 }

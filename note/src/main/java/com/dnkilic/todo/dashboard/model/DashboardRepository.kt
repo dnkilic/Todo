@@ -23,4 +23,8 @@ class DashboardRepository(private val local: DashboardContract.Local) : Dashboar
     override suspend fun deleteNotes(noteIds: List<Long>) {
         local.deleteNotes(noteIds)
     }
+
+    override suspend fun insert(notes: List<Note>) {
+        local.insert(notes)
+    }
 }

@@ -12,6 +12,7 @@ import com.dnkilic.todo.data.NotesDependencyHolder
 import com.dnkilic.todo.data.json.Note
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import kotlin.random.Random
 
 class DashboardViewModel(private val repo: DashboardContract.Repository) : ViewModel() {
 
@@ -89,5 +90,26 @@ class DashboardViewModel(private val repo: DashboardContract.Repository) : ViewM
     override fun onCleared() {
         super.onCleared()
         NotesDependencyHolder.destroyDashboardComponent()
+    }
+
+    fun createNotes() {
+        fun createRandomList(): List<Note> {
+            val lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            return (1..1000).map {
+                Note(it.toLong(), "Title $it", lorem, Random.nextLong(1509522259995, 1599522259995),
+                    (0..(Random.nextInt(0, 10))).map { "tag $it" }, isCompleted = Random.nextBoolean())
+            }
+        }
+
+        viewModelScope.launch {
+            repo.insert(createRandomList())
+            try {
+                val notes = repo.getNotes()
+                notesMutableLiveData.success(notes)
+            } catch (exception: Exception) {
+                Timber.e(exception)
+                handleError(notesMutableLiveData, exception)
+            }
+        }
     }
 }
