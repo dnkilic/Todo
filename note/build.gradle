@@ -34,10 +34,6 @@ dependencies {
     implementation project(':core')
     implementation library.facebook.shimmer
 
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0'
     kapt library.androidx.roomCompiler
     kapt library.google.daggerCompiler
 
