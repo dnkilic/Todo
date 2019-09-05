@@ -42,14 +42,11 @@
         tools:listitem="@layout/dashboard_item"/>
 
     <TextView
+        style="@style/ClickableText"
         android:id="@+id/createNote"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/create_task"
-        android:padding="@dimen/create_task_padding"
-        android:textColor="@color/white_50"
-        android:textSize="@dimen/create_task_text_size"
-        android:background="@drawable/create_button_background"
         android:drawableStart="@drawable/ic_add"
         android:drawablePadding="@dimen/drawable_padding"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -57,14 +54,11 @@
         app:layout_constraintEnd_toStartOf="@id/createNotes"/>
 
     <TextView
+        style="@style/ClickableText"
         android:id="@+id/createNotes"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/create_tasks"
-        android:padding="@dimen/create_task_padding"
-        android:textColor="@color/white_50"
-        android:textSize="@dimen/create_task_text_size"
-        android:background="@drawable/create_button_background"
         android:drawableStart="@drawable/ic_add"
         android:drawablePadding="@dimen/drawable_padding"
         app:layout_constraintBottom_toBottomOf="parent"
