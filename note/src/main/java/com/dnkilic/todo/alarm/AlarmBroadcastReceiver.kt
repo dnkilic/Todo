@@ -40,9 +40,9 @@ class AlarmBroadcastReceiver : BroadcastReceiver() {
             val intent = Intent(context.applicationContext, AlarmBroadcastReceiver::class.java).apply {
                 action = context.getString(R.string.action_notify_task_due_date)
                 type = id.toString()
-                putExtra("EXTRA_ID", id)
-                putExtra("EXTRA_TITLE", title)
-                putExtra("EXTRA_DESCRIPTION", description)
+                putExtra(EXTRA_ID, id)
+                putExtra(EXTRA_TITLE, title)
+                putExtra(EXTRA_DESCRIPTION, description)
             }
 
             return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
